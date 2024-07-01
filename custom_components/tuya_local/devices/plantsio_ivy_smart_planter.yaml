@@ -6,13 +6,17 @@ products:
     name: PlantsIO Ivy Smart Planter
 primary_entity:
   entity: sensor
-  name: Soil moisture
-  class: moisture
+  name: Water level
   dps:
-    - id: 122
-      name: sensor
+    - id: 108
       type: integer
-      unit: "%"
+      name: sensor
+      unit: mL
+      class: measurement
+      mapping:
+        - dps_val: 0
+          icon: "mdi:cup-outline"
+        - icon: "mdi:cup"
     - id: 107
       type: string
       name: version
@@ -47,17 +51,14 @@ secondary_entities:
         unit: "%"
         class: measurement
   - entity: sensor
-    name: Water level
+    name: Soil moisture
+    class: moisture
     dps:
-      - id: 108
-        type: integer
+      - id: 122
         name: sensor
-        unit: mL
-        class: measurement
-        mapping:
-          - dps_val: 0
-            icon: "mdi:cup-outline"
-          - icon: "mdi:cup"
+        type: integer
+        optional: true
+        unit: "%"
   - entity: sensor
     name: Battery
     class: battery
@@ -169,9 +170,9 @@ secondary_entities:
         type: boolean
         name: option
         mapping:
-          - dps_val: False
+          - dps_val: false
             value: celsius
-          - dps_val: True
+          - dps_val: true
             value: fahrenheit
   - entity: select
     name: Color
@@ -198,7 +199,7 @@ secondary_entities:
     category: config
     dps:
       - id: 119
-        type: int
+        type: integer
         name: option
         mapping:
           - dps_val: 1
@@ -313,7 +314,7 @@ secondary_entities:
     icon: "mdi:brightness-percent"
     dps:
       - id: 101
-        type: int
+        type: integer
         name: value
         range:
           min: 0
@@ -327,7 +328,7 @@ secondary_entities:
         type: boolean
         name: switch
         mapping:
-          - dps_val: False
+          - dps_val: false
             icon: "mdi:ear-hearing-off"
   - entity: number
     name: Sound sensitivity
@@ -335,7 +336,7 @@ secondary_entities:
     icon: "mdi:ear-hearing"
     dps:
       - id: 115
-        type: int
+        type: integer
         name: value
         range:
           min: 0
@@ -354,7 +355,7 @@ secondary_entities:
     icon: "mdi:radar"
     dps:
       - id: 116
-        type: int
+        type: integer
         name: value
         range:
           min: 0
@@ -376,7 +377,7 @@ secondary_entities:
         type: boolean
         name: switch
         mapping:
-          - dps_val: False
+          - dps_val: false
             icon: "mdi:sleep-off"
   - entity: sensor
     name: Touching
@@ -403,9 +404,9 @@ secondary_entities:
         type: boolean
         name: option
         mapping:
-          - dps_val: False
+          - dps_val: false
             value: "12 Hour Clock"
-          - dps_val: True
+          - dps_val: true
             value: "24 Hour Clock"
   - entity: select
     name: Language
@@ -413,7 +414,7 @@ secondary_entities:
     category: config
     dps:
       - id: 144
-        type: int
+        type: integer
         name: option
         mapping:
           - dps_val: 0
