@@ -92,6 +92,78 @@ secondary_entities:
           - dps_val: true
             value: "Plant in pot"
             icon: "mdi:sprout"
+  - entity: sensor
+    name: Water status
+    class: enum
+    dps:
+      - id: 106
+        type: bitfield
+        name: sensor
+        mapping:
+          - dps_val: 1
+            value: "Unknown state"
+          - dps_val: 2
+            value: "Drinking"
+          - dps_val: 3
+            value: "Unknown state"
+          - dps_val: 4
+            value: "Unknown state"
+          - dps_val: 5
+            value: "Unknown state"
+  - entity: sensor
+    name: Light status
+    class: enum
+    dps:
+      - id: 138
+        type: bitfield
+        name: sensor
+        mapping:
+          - dps_val: 1
+            value: "Acceptable"
+          - dps_val: 2
+            value: "Good"
+          - dps_val: 3
+            value: "Exceptional"
+          - dps_val: 4
+            value: "Too Much"
+          - dps_val: 5
+            value: "Insufficient"
+  - entity: sensor
+    name: Temperature status
+    class: enum
+    dps:
+      - id: 139
+        type: bitfield
+        name: sensor
+        mapping:
+          - dps_val: 1
+            value: "Good"
+          - dps_val: 2
+            value: "Hot"
+          - dps_val: 3
+            value: "Cold"
+          - dps_val: 4
+            value: "Unknown state"
+          - dps_val: 5
+            value: "Unknown state"
+  - entity: sensor
+    name: Humidity status
+    class: enum
+    dps:
+      - id: 140
+        type: bitfield
+        name: sensor
+        mapping:
+          - dps_val: 1
+            value: "Good"
+          - dps_val: 2
+            value: "Unknown state"
+          - dps_val: 3
+            value: "Unknown state"
+          - dps_val: 4
+            value: "Unknown state"
+          - dps_val: 5
+            value: "Unknown state"
   - entity: select
     translation_key: temperature_unit
     category: config
@@ -104,6 +176,132 @@ secondary_entities:
             value: celsius
           - dps_val: True
             value: fahrenheit
+  - entity: select
+    name: Color
+    icon: "mdi:palette"
+    category: config
+    dps:
+      - id: 113
+        type: bitfield
+        name: option
+        mapping:
+          - dps_val: 0
+            value: "White"
+          - dps_val: 1
+            value: "Yellow"
+          - dps_val: 2
+            value: "Green"
+          - dps_val: 3
+            value: "Pink"
+          - dps_val: 4
+            value: "Purple"
+  - entity: select
+    name: Plant type
+    icon: "mdi:sprout"
+    category: config
+    dps:
+      - id: 119
+        type: int
+        name: option
+        mapping:
+          - dps_val: 1
+            value: "Devil's Ivy"
+          - dps_val: 2
+            value: "Dwarf Umbrella Tree"
+          - dps_val: 3
+            value: "Spider Plant"
+          - dps_val: 4
+            value: "Parlor Palm"
+          - dps_val: 5
+            value: "Buddist Pine"
+          - dps_val: 6
+            value: "Arrowhead Plant (Pink)"
+          - dps_val: 7
+            value: "Arrowhead Plant (Green)"
+          - dps_val: 8
+            value: "Arrowhead Plant (Marble)"
+          - dps_val: 9
+            value: "Philidendron Congo"
+          - dps_val: 10
+            value: "Orange Jasmine"
+          - dps_val: 11
+            value: "Perls and Jade"
+          - dps_val: 12
+            value: "Rubber Tree"
+          - dps_val: 13
+            value: "Baby Rubber Plant"
+          - dps_val: 14
+            value: "Silver Goosefoot"
+          - dps_val: 15
+            value: "Swiss Cheese"
+          - dps_val: 16
+            value: "Dumb Cane"
+          - dps_val: 17
+            value: "Common Ivy"
+          - dps_val: 18
+            value: "Aluminum Plant"
+          - dps_val: 19
+            value: "Bird of Paradise"
+          - dps_val: 20
+            value: "Asian Bell Tree"
+          - dps_val: 21
+            value: "Satin Pothos"
+          - dps_val: 22
+            value: "Heartleaf Philodendron"
+          - dps_val: 23
+            value: "Raindrop Peperomia"
+          - dps_val: 24
+            value: "Parallel Peperomia"
+          - dps_val: 25
+            value: "Watermelon Peperomia"
+          - dps_val: 26
+            value: "Nerve Plant"
+          - dps_val: 27
+            value: "Peacock Plant"
+          - dps_val: 28
+            value: "Calathea Freddie"
+          - dps_val: 29
+            value: "Orbifolia Prayer Plant"
+          - dps_val: 30
+            value: "Bird's Nest Fern"
+          - dps_val: 31
+            value: "Squirrel's Foot Fern"
+          - dps_val: 32
+            value: "Heart Leaf Fern"
+          - dps_val: 33
+            value: "Cretan Brake"
+          - dps_val: 34
+            value: "Florist Kalanchoe"
+          - dps_val: 35
+            value: "Ruby Glow"
+          - dps_val: 36
+            value: "Succulents"
+          - dps_val: 37
+            value: "Marjoram"
+          - dps_val: 38
+            value: "Rosemary"
+          - dps_val: 39
+            value: "Basil"
+          - dps_val: 40
+            value: "Mint"
+          - dps_val: 41
+            value: "Parlsey"
+          - dps_val: 42
+            value: "Catnip"
+          - dps_val: 43
+            value: "Avocado"
+          - dps_val: 44
+            value: "Tiger Lily"
+          - dps_val: 45
+            value: "Cilantro"
+  - entity: switch
+    name: Touch perception
+    category: config
+    icon: "mdi:gesture-tap"
+    dps:
+      - id: 110
+        type: boolean
+        name: switch
   - entity: switch
     name: Auto brightness
     category: config
@@ -123,3 +321,57 @@ secondary_entities:
         range:
           min: 0
           max: 100
+  - entity: switch
+    name: Sound perception
+    category: config
+    icon: "mdi:ear-hearing-off"
+    dps:
+      - id: 125
+        type: boolean
+        name: switch
+  - entity: number
+    name: Sound sensitivity
+    category: config
+    icon: "mdi:ear-hearing"
+    dps:
+      - id: 115
+        type: int
+        name: value
+        range:
+          min: 0
+          max: 100
+  - entity: switch
+    name: Plant detection
+    category: config
+    icon: "mdi:radar"
+    dps:
+      - id: 123
+        type: boolean
+        name: switch
+  - entity: number
+    name: Plant detection sensitivity
+    category: config
+    icon: "mdi:radar"
+    dps:
+      - id: 116
+        type: int
+        name: value
+        range:
+          min: 0
+          max: 100
+  - entity: sensor
+    name: Version
+    class: string
+    category: diagnostic
+    dps:
+      - id: 107
+        type: json
+        name: sensor
+  - entity: sensor
+    name: Touching
+    class: string
+    category: diagnostic
+    dps:
+      - id: 111
+        type: string
+        name: sensor
