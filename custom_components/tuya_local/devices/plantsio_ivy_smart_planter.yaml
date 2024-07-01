@@ -21,6 +21,7 @@ primary_entity:
       type: string
       name: version
 secondary_entities:
+  # Sensor entities
   - entity: sensor
     name: Ambient light
     class: illuminance
@@ -60,45 +61,6 @@ secondary_entities:
         optional: true
         unit: "%"
   - entity: sensor
-    name: Battery
-    class: battery
-    category: diagnostic
-    dps:
-      - id: 121
-        type: integer
-        name: sensor
-        unit: "%"
-  - entity: sensor
-    name: Charge state
-    class: enum
-    category: diagnostic
-    dps:
-      - id: 109
-        type: boolean
-        name: sensor
-        mapping:
-          - dps_val: false
-            value: "Battery"
-            icon: "mdi:battery"
-          - dps_val: true
-            value: "Charging"
-            icon: "mdi:battery-charging"
-  - entity: sensor
-    name: Pot state
-    class: enum
-    category: diagnostic
-    dps:
-      - id: 102
-        type: boolean
-        name: sensor
-        mapping:
-          - dps_val: false
-            value: "Empty"
-            icon: "mdi:cup-off-outline"
-          - dps_val: true
-            value: "Plant in pot"
-            icon: "mdi:sprout"
-  - entity: sensor
     name: Water status
     icon: "mdi:watering-can"
     class: enum
@@ -108,7 +70,7 @@ secondary_entities:
         name: sensor
         mapping:
           - dps_val: 0
-            value: "Initiliazing"
+            value: "Initializing"
           - dps_val: 2
             value: "Drinking"
           - value: "Unknown state"
@@ -162,6 +124,55 @@ secondary_entities:
           - dps_val: 1
             value: "Good"
           - value: "Unknown state"
+  # Diagnostic entities
+  - entity: sensor
+    name: Battery
+    class: battery
+    category: diagnostic
+    dps:
+      - id: 121
+        type: integer
+        name: sensor
+        unit: "%"
+  - entity: sensor
+    name: Charge state
+    class: enum
+    category: diagnostic
+    dps:
+      - id: 109
+        type: boolean
+        name: sensor
+        mapping:
+          - dps_val: false
+            value: "Battery"
+            icon: "mdi:battery"
+          - dps_val: true
+            value: "Charging"
+            icon: "mdi:battery-charging"
+  - entity: sensor
+    name: Pot state
+    class: enum
+    category: diagnostic
+    dps:
+      - id: 102
+        type: boolean
+        name: sensor
+        mapping:
+          - dps_val: false
+            value: "Empty"
+            icon: "mdi:cup-off-outline"
+          - dps_val: true
+            value: "Plant in pot"
+            icon: "mdi:sprout"
+  - entity: sensor
+    name: Touching
+    category: diagnostic
+    icon: "mdi:gesture-tap"
+    dps:
+      - id: 111
+        type: string
+        name: sensor
+  # Config entities
   - entity: select
     translation_key: temperature_unit
     category: config
@@ -283,7 +294,7 @@ secondary_entities:
           - dps_val: 40
             value: "Mint"
           - dps_val: 41
-            value: "Parlsey"
+            value: "Parsley"
           - dps_val: 42
             value: "Catnip"
           - dps_val: 43
@@ -379,14 +390,6 @@ secondary_entities:
         mapping:
           - dps_val: false
             icon: "mdi:sleep-off"
-  - entity: sensor
-    name: Touching
-    category: diagnostic
-    icon: "mdi:gesture-tap"
-    dps:
-      - id: 111
-        type: string
-        name: sensor
   - entity: button
     name: Manual calibration
     category: config
