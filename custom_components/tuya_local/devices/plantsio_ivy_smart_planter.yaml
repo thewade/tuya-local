@@ -1,3 +1,5 @@
+# Datapoints documented at https://gist.github.com/thewade/ef9f6014f13932bd2e77d43331e2027d
+
 name: Smart Planter
 products:
   - id: 8n3q0y4cwov8ifxt
@@ -11,6 +13,9 @@ primary_entity:
       name: sensor
       type: integer
       unit: "%"
+    - id: 107
+      type: string
+      name: version
 secondary_entities:
   - entity: sensor
     name: Ambient light
@@ -19,7 +24,7 @@ secondary_entities:
       - id: 103
         type: integer
         name: sensor
-        unit: "lx"
+        unit: lx
         class: measurement
   - entity: sensor
     name: Temperature
@@ -28,7 +33,7 @@ secondary_entities:
       - id: 104
         type: integer
         name: sensor
-        unit: "C"
+        unit: C
         class: measurement
         mapping:
           - scale: 10
@@ -47,7 +52,7 @@ secondary_entities:
       - id: 108
         type: integer
         name: sensor
-        unit: "mL"
+        unit: mL
         class: measurement
         mapping:
           - dps_val: 0
@@ -94,24 +99,21 @@ secondary_entities:
             icon: "mdi:sprout"
   - entity: sensor
     name: Water status
+    icon: "mdi:watering-can"
     class: enum
     dps:
       - id: 106
         type: bitfield
         name: sensor
         mapping:
-          - dps_val: 1
-            value: "Unknown state"
+          - dps_val: 0
+            value: "Initiliazing"
           - dps_val: 2
             value: "Drinking"
-          - dps_val: 3
-            value: "Unknown state"
-          - dps_val: 4
-            value: "Unknown state"
-          - dps_val: 5
-            value: "Unknown state"
+          - value: "Unknown state"
   - entity: sensor
     name: Light status
+    icon: "mdi:brightness-5"
     class: enum
     dps:
       - id: 138
@@ -128,8 +130,10 @@ secondary_entities:
             value: "Too Much"
           - dps_val: 5
             value: "Insufficient"
+          - value: "Unknown state"
   - entity: sensor
     name: Temperature status
+    icon: "mdi:thermometer"
     class: enum
     dps:
       - id: 139
@@ -140,15 +144,15 @@ secondary_entities:
             value: "Good"
           - dps_val: 2
             value: "Hot"
+            icon: "mdi:thermometer-high"
           - dps_val: 3
             value: "Cold"
-          - dps_val: 4
-            value: "Unknown state"
-          - dps_val: 5
-            value: "Unknown state"
+            icon: "mdi:thermometer-low"
+          - value: "Unknown state"
   - entity: sensor
     name: Humidity status
     class: enum
+    icon: "mdi:water-percent"
     dps:
       - id: 140
         type: bitfield
@@ -156,14 +160,7 @@ secondary_entities:
         mapping:
           - dps_val: 1
             value: "Good"
-          - dps_val: 2
-            value: "Unknown state"
-          - dps_val: 3
-            value: "Unknown state"
-          - dps_val: 4
-            value: "Unknown state"
-          - dps_val: 5
-            value: "Unknown state"
+          - value: "Unknown state"
   - entity: select
     translation_key: temperature_unit
     category: config
@@ -324,11 +321,14 @@ secondary_entities:
   - entity: switch
     name: Sound perception
     category: config
-    icon: "mdi:ear-hearing-off"
+    icon: "mdi:ear-hearing"
     dps:
       - id: 125
         type: boolean
         name: switch
+        mapping:
+          - dps_val: False
+            icon: "mdi:ear-hearing-off"
   - entity: number
     name: Sound sensitivity
     category: config
@@ -359,19 +359,68 @@ secondary_entities:
         range:
           min: 0
           max: 100
-  - entity: sensor
-    name: Version
-    class: string
-    category: diagnostic
+  - entity: switch
+    name: Night sleep
+    icon: "mdi:moon-waning-crescent"
+    category: config
     dps:
-      - id: 107
-        type: json
-        name: sensor
+      - id: 131
+        type: boolean
+        name: switch
+  - entity: switch
+    name: Smart sleep
+    icon: "mdi:sleep"
+    category: config
+    dps:
+      - id: 132
+        type: boolean
+        name: switch
+        mapping:
+          - dps_val: False
+            icon: "mdi:sleep-off"
   - entity: sensor
     name: Touching
-    class: string
     category: diagnostic
+    icon: "mdi:gesture-tap"
     dps:
       - id: 111
         type: string
         name: sensor
+  - entity: button
+    name: Manual calibration
+    category: config
+    icon: "mdi:scale-balance"
+    dps:
+      - id: 124
+        type: boolean
+        name: button
+  - entity: select
+    name: Time format
+    icon: "mdi:clock"
+    category: config
+    dps:
+      - id: 136
+        type: boolean
+        name: option
+        mapping:
+          - dps_val: False
+            value: "12 Hour Clock"
+          - dps_val: True
+            value: "24 Hour Clock"
+  - entity: select
+    name: Language
+    icon: "mdi:translate"
+    category: config
+    dps:
+      - id: 144
+        type: int
+        name: option
+        mapping:
+          - dps_val: 0
+            value: "Chinese"
+          - dps_val: 1
+            value: "English"
+          - dps_val: 2
+            value: "Japanese"
+          - dps_val: 3
+            value: "French"
