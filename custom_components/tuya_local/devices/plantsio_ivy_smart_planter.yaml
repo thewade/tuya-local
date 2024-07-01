@@ -1,0 +1,125 @@
+name: Smart Planter
+products:
+  - id: 8n3q0y4cwov8ifxt
+    name: PlantsIO Ivy Smart Planter
+primary_entity:
+  entity: sensor
+  name: Soil moisture
+  class: moisture
+  dps:
+    - id: 122
+      name: sensor
+      type: integer
+      unit: "%"
+secondary_entities:
+  - entity: sensor
+    name: Ambient light
+    class: illuminance
+    dps:
+      - id: 103
+        type: integer
+        name: sensor
+        unit: "lx"
+        class: measurement
+  - entity: sensor
+    name: Temperature
+    class: temperature
+    dps:
+      - id: 104
+        type: integer
+        name: sensor
+        unit: "C"
+        class: measurement
+        mapping:
+          - scale: 10
+  - entity: sensor
+    name: Humidity
+    class: humidity
+    dps:
+      - id: 105
+        type: integer
+        name: sensor
+        unit: "%"
+        class: measurement
+  - entity: sensor
+    name: Water level
+    dps:
+      - id: 108
+        type: integer
+        name: sensor
+        unit: "mL"
+        class: measurement
+        mapping:
+          - dps_val: 0
+            icon: "mdi:cup-outline"
+          - icon: "mdi:cup"
+  - entity: sensor
+    name: Battery
+    class: battery
+    category: diagnostic
+    dps:
+      - id: 121
+        type: integer
+        name: sensor
+        unit: "%"
+  - entity: sensor
+    name: Charge state
+    class: enum
+    category: diagnostic
+    dps:
+      - id: 109
+        type: boolean
+        name: sensor
+        mapping:
+          - dps_val: false
+            value: "Battery"
+            icon: "mdi:battery"
+          - dps_val: true
+            value: "Charging"
+            icon: "mdi:battery-charging"
+  - entity: sensor
+    name: Pot state
+    class: enum
+    category: diagnostic
+    dps:
+      - id: 102
+        type: boolean
+        name: sensor
+        mapping:
+          - dps_val: false
+            value: "Empty"
+            icon: "mdi:cup-off-outline"
+          - dps_val: true
+            value: "Plant in pot"
+            icon: "mdi:sprout"
+  - entity: select
+    translation_key: temperature_unit
+    category: config
+    dps:
+      - id: 130
+        type: boolean
+        name: option
+        mapping:
+          - dps_val: False
+            value: celsius
+          - dps_val: True
+            value: fahrenheit
+  - entity: switch
+    name: Auto brightness
+    category: config
+    icon: "mdi:brightness-auto"
+    dps:
+      - id: 135
+        type: boolean
+        name: switch
+  - entity: number
+    name: Brightness
+    category: config
+    icon: "mdi:brightness-percent"
+    dps:
+      - id: 101
+        type: int
+        name: value
+        range:
+          min: 0
+          max: 100
