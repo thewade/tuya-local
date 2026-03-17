@@ -1,0 +1,240 @@
+name: Smart planter
+products:
+  - id: il6e0dusjrlxxhgr
+    manufacturer: PlantsIO
+    model: Ivy Gen 2
+entities:
+  - entity: sensor
+    name: Water level
+    class: volume_storage
+    dps:
+      - id: 101
+        type: integer
+        name: sensor
+        unit: mL
+        class: measurement
+        mapping:
+          - dps_val: 0
+            icon: "mdi:cup-outline"
+          - icon: "mdi:cup"
+  # Sensor entities raw
+  - entity: sensor
+    class: illuminance
+    dps:
+      - id: 102
+        type: integer
+        name: sensor
+        unit: lx
+        class: measurement
+  - entity: sensor
+    class: temperature
+    dps:
+      - id: 103
+        type: integer
+        name: sensor
+        unit: C
+        class: measurement
+        mapping:
+          - scale: 10
+  - entity: sensor
+    class: humidity
+    dps:
+      - id: 104
+        type: integer
+        name: sensor
+        unit: "%"
+        class: measurement
+  - entity: sensor
+    class: moisture
+    dps:
+      - id: 105
+        name: sensor
+        type: integer
+        optional: true
+        unit: "%"
+  - entity: sensor
+    name: Daily light integral
+    dps:
+      - id: 130
+        name: sensor
+        type: integer
+        unit: "DLI"
+  # Sensor entities intelligent
+  - entity: sensor
+    name: Water status
+    icon: "mdi:watering-can"
+    class: enum
+    dps:
+      - id: 123
+        type: integer
+        name: sensor
+        mapping:
+          - dps_val: 0
+            value: "Initializing"
+          - dps_val: 1
+            value: "Analyzing"
+          - dps_val: 2
+            value: "Drinking"
+          - dps_val: 3
+            value: "Absorbing from soil"
+          - dps_val: 4
+            value: "Thirsty"
+          - dps_val: 5
+            value: "Dehydrated"
+          - value: "Unknown state"
+  - entity: sensor
+    name: Light status
+    icon: "mdi:brightness-5"
+    class: enum
+    dps:
+      - id: 124
+        type: integer
+        name: sensor
+        mapping:
+          - dps_val: 0
+            value: "Initializing"
+          - dps_val: 1
+            value: "Acceptable"
+          - dps_val: 2
+            value: "Good"
+          - dps_val: 3
+            value: "Exceptional"
+          - dps_val: 4
+            value: "Too Much"
+          - dps_val: 5
+            value: "Insufficient"
+          - dps_val: 6
+            value: "Manual mode"
+          - value: "Unknown state"
+
+  # Button entities
+  - entity: event
+    name: Left touch
+    icon: "mdi:hand-pointing-right"
+    class: button
+    dps:
+      - id: 120
+        type: boolean
+        name: event
+        optional: true
+        mapping:
+          - dps_val: true
+            value: pressed
+          - value: null
+  - entity: event
+    name: Right touch
+    icon: "mdi:hand-pointing-left"
+    class: button
+    dps:
+      - id: 121
+        type: boolean
+        name: event
+        optional: true
+        mapping:
+          - dps_val: true
+            value: pressed
+          - value: null
+  - entity: event
+    name: Plant touch
+    icon: "mdi:hand-pointing-down"
+    class: button
+    dps:
+      - id: 122
+        type: boolean
+        name: event
+        optional: true
+        mapping:
+          - dps_val: true
+            value: pressed
+          - value: null
+  - entity: event
+    name: Hug
+    class: button
+    icon: "mdi:human-handsup"
+    dps:
+      - id: 119
+        type: integer
+        name: sensor
+        mapping:
+          - dps_val: 1
+            value: pressed
+          - value: null
+  # Diagnostic entities
+  - entity: sensor
+    class: battery
+    category: diagnostic
+    dps:
+      - id: 106
+        type: integer
+        name: sensor
+        unit: "%"
+  # Config entities
+  - entity: sensor
+    name: Configuration
+    category: diagnostic
+    hidden: true
+    dps:
+      - id: 107
+        type: string
+        name: pomodoro_timer_custom_duration
+        optional: true
+      - id: 108
+        type: json
+        name: select_plant
+      - id: 109
+        type: json
+        name: device_info
+      - id: 110
+        type: json
+        name: plant_sensing
+      - id: 111
+        type: json
+        name: display
+      - id: 112
+        type: json
+        name: sleep_interface
+      - id: 113
+        type: json
+        name: sensing
+      - id: 114
+        type: json
+        name: custom_animation
+      - id: 115
+        type: json
+        name: localization
+      - id: 116
+        type: json
+        name: other_settings
+      - id: 117
+        type: string
+        name: system_command
+        optional: true
+      - id: 118
+        type: boolean
+        name: tutorial_complete
+      - id: 125
+        type: json
+        name: secondary_status
+      - id: 126
+        type: string
+        name: director_mode
+        optional: true
+      - id: 127
+        type: string
+        name: behavior_tree
+        optional: true
+      - id: 129
+        type: json
+        name: pomodoro_timer
+      - id: 131
+        type: string
+        name: spare_string
+      - id: 132
+        type: boolean
+        name: spare_boolean
+      - id: 133
+        type: number
+        name: spare_number
+      - id: 134
+        type: number
+        name: spare_number
